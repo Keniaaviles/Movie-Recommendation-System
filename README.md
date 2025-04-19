@@ -6,7 +6,7 @@ This project aims to develop a Python-based movie recommendation system that all
 
 FEATURES
 
-Personalized movie recommendations based on user preferences
-Easy-to-use interface for inputting preferences
-Recommendations sourced from a predefined dataset
-No need for user accounts or logins
+- Personalized movie recommendations based on user preferences
+- Easy-to-use interface for inputting preferences
+- Recommendations sourced from a predefined dataset
+- No need for user accounts or logins
