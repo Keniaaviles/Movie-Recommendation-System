@@ -1,35 +1,49 @@
 """
-main.py
+Main entry point for the Movie Recommendation System.
 
-This is the main file for the Movie Recommendation System.
-It coordinates the user interface, data handling, and recommendation engine modules.
+This script integrates all the modules in the system:
+1. User Interface (`ui.py`): Collects user preferences.
+2. Recommendation Engine (`recommender.py`): Processes preferences and provides recommendations.
+3. Data Handler (`data_handler.py`): Loads and processes movie data.
+
+This is the file that ties everything together and allows the user to interact with the system.
+
+Author: Team Project (Kenia, Farzan, Kirubel)
 """
 
-# Importing planned modules 
 from ui import get_user_preferences
 from recommender import recommend_movies
-from data_handler import load_movie_data
+from data_handler import load_movies_from_csv
 
 def main():
     """
-    The main function of the program.
-    Gathers user preferences, loads movie data, and prints recommendations.
+    Main function to run the movie recommendation system.
+    
+    The flow of the program:
+    1. Load the movie data from a CSV file.
+    2. Get the user's preferences (genres they like).
+    3. Recommend movies based on those preferences.
+    4. Display the recommendations to the user.
     """
-    print("Welcome to the Movie Recommendation System!")
-
-    # Get user input 
-    preferences = get_user_preferences()
-
-    # Load movie data 
-    movies = load_movie_data("sample_data.csv")
-
-    # Get recommendations 
-    recommendations = recommend_movies(preferences, movies)
-
-    # Show results 
-    print("\nRecommended Movies:")
-    for movie in recommendations:
-        print("-", movie)
+    # Load movie data from CSV
+    print("Loading movie data...")
+    movies = load_movies_from_csv("movies_data.csv")
+    
+    # Get user preferences (genres they like)
+    user_preferences = get_user_preferences()
+    
+    # Recommend movies based on user preferences
+    recommendations = recommend_movies(user_preferences, movies)
+    
+    # Display the recommendations to the user
+    if recommendations:
+        print("\nRecommended Movies:")
+        for movie in recommendations:
+            print(f"- {movie['title']} ({', '.join(movie['genres'])})")
+    else:
+        print("\nSorry, no movies match your preferences.")
 
 if __name__ == "__main__":
+    # Start the program
     main()
+
