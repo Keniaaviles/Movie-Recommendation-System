@@ -42,7 +42,7 @@ def display_recommendations(recommendations):
 if __name__ == "__main__":
     user_genres = get_user_preferences()
 
-    # Example hardcoded recommendations for testing purposes
+    # Example recommendations for testing purposes
     sample_recommendations = ["Spiderman: No Way Home", "The Matrix", "The Minecraft Movie"]
 
     display_recommendations(sample_recommendations)
