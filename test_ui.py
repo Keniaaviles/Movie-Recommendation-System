@@ -9,7 +9,7 @@ class TestUI(unittest.TestCase):
         Test that when the user types genres, the program splits it into
         a list of genres, removes extra spaces, and capitalizes each word.
         """
-        # Normally, you'd run this by typing in the console, but here we simulate what the user types:
+        # here we simulate what the user types:
         # Imagine the user types 'Action, comedy, Drama'
         raw_input = 'Action, comedy, Drama'
         expected = ['Action', 'Comedy', 'Drama']  # This is what we expect
