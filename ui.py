@@ -17,7 +17,7 @@ def get_user_preferences():
     """
     print("Welcome to the Movie Recommendation System!")
     print("Tell us the kinds of movies you enjoy so we can recommend some for you.")
-    print("Example genres: Action, Comedy, Sci-Fi, Adventure, Animation")
+    print("Example genres: Action, Comedy, Sci-Fi, Adventure, Animation, Romance")
     user_input = input("Enter your favorite genres (separated by commas): ")
     
     # Clean up the input and return it as a list of genres
@@ -37,6 +37,23 @@ def display_recommendations(recommendations):
     else:
         for movie in recommendations:
             print(f"- {movie}")
+
+def get_number_of_recommendations():
+    """
+    Ask the user how many recommendations they want.
+
+    Returns:
+        int: The number of movie recommendations to show.
+    """
+    while True:
+        try:
+            num = int(input("How many movie recommendations would you like? "))
+            if num > 0:
+                return num
+            else:
+                print("Please enter a positive number.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
 # Example test run if this file is run directly
 if __name__ == "__main__":
