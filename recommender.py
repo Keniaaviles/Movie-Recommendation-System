@@ -7,24 +7,29 @@ It uses a dataset of movies and filters it based on the genres the user likes.
 Author: Farzan Khan
 """
 
-def recommend_movies(preferred_genres, movie_list):
+def recommend_movies(preferred_genres, movie_list, limit):
     """
-    Recommend movies that match the user's favorite genres.
+    Recommend a limited number of movies based on the user's preferred genres.
 
     Args:
         preferred_genres (list): A list of genres the user enjoys.
         movie_list (list): A list of movie dictionaries with 'title' and 'genres' keys.
+        limit (int): The maximum number of movie recommendations to return.
 
     Returns:
-        list: A list of movie titles that match the user's preferences.
+        list: A list of movie titles that match the user's preferences,limited to the number specified.
     """
     recommendations = []
-
     for movie in movie_list:
-        # Check if any of the user's genres are in the movie's genres
-        if any(genre in movie['genres'] for genre in preferred_genres):
-            recommendations.append(movie['title'])
-
+        if len(recommendations) >= limit:
+            break
+        genres_data = movie.get("genres", "")
+        if isinstance(genres_data, str):
+            movie_genres = genres_data.split("|")
+        else:
+            movie_genres = genres_data
+        if any(genre in preferred_genres for genre in movie_genres):
+            recommendations.append(movie.get("title", "Untitled"))
     return recommendations
 
 # Example usage (used for testing only if you run this file directly)
@@ -37,7 +42,7 @@ if __name__ == "__main__":
     ]
 
     user_genres = ["Action", "Animation"]
-    results = recommend_movies(user_genres, sample_movies)
+    results = recommend_movies(user_genres, sample_movies,2)
 
     print("Recommended Movies:")
     for movie in results:
