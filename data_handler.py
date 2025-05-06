@@ -26,7 +26,7 @@ def load_movies_from_csv(filename):
             reader = csv.DictReader(file)
             for row in reader:
                 title = row['title']
-                genres = row['genres'].split('|')  # Genres separated by |
+                genres = row['genres'].split('|')  # Genres separated by | in csv
                 movies.append({'title': title, 'genres': genres})
     except FileNotFoundError:
         print(f"File {filename} not found.")
@@ -35,8 +35,8 @@ def load_movies_from_csv(filename):
 
     return movies
 
-# Sample test when run directly
+# Test when run directly
 if __name__ == "__main__":
-    movie_list = load_movies_from_csv("sample_data.csv")
+    movie_list = load_movies_from_csv("movies_data.csv") 
     for movie in movie_list:
         print(movie)
