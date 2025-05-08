@@ -1,3 +1,4 @@
+
 """
 Main entry point for the Movie Recommendation System.
 
@@ -10,7 +11,7 @@ This is the file that ties everything together and allows the user to interact w
 
 Author: Team Project (Kenia, Farzan, Kirubel)
 """
-import random 
+import random  # new add
 from ui import get_user_preferences, display_recommendations, get_number_of_recommendations
 from recommender import recommend_movies
 from data_handler import load_movies_from_csv
@@ -37,8 +38,8 @@ def main():
         print("Error: No movies loaded. Please check that 'movies_data.csv' exists and is correctly formatted.")
         return
 
-    # Get user preferences (genres they like, or 'random')
-    user_preferences = get_user_preferences()
+    # Get user preferences (pass movie data to allow 'list' of genres)
+    user_preferences = get_user_preferences(movies)
 
     # If user asks for a random mix, ignore genres and pick at random
     if len(user_preferences) == 1 and user_preferences[0].lower() == "random":
@@ -63,4 +64,4 @@ def main():
 if __name__ == "__main__":
     # Start the program
     main()
-
+    

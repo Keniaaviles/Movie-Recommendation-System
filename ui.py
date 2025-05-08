@@ -5,25 +5,50 @@ This module handles the user interaction for the movie recommendation system.
 It gathers user preferences (favorite genres) and displays recommended movies
 based on those preferences.
 
-Author: Kenia Aviles
+Author: Kenia Aviles, Kirubel Mogese
 """
 
-def get_user_preferences():
+def get_user_preferences(movies):
     """
     Prompts the user to enter their favorite movie genres.
+
+    Users can type 'random' or 'list' to view all available genres before choosing.
+
+    Args:
+        movies (list): List of movie data to extract available genres.
 
     Returns:
         list: A list of genre strings entered by the user.
     """
+    # Build a set of all genres from the movie data
+    all_genres = set()
+    for movie in movies:
+        for g in movie.get("genres", []):
+            all_genres.add(g)
+
     print("Welcome to the Movie Recommendation System!")
     print("Tell us the kinds of movies you enjoy so we can recommend some for you.")
     print("Example genres: Action, Comedy, Sci-Fi, Adventure, Animation, Romance")
     print("Or type 'random' for a surprise mix of movies!")
-    user_input = input("Enter your favorite genres (separated by commas): ")
-    
-    # Clean up the input and return it as a list of genres
-    genres = [genre.strip().title() for genre in user_input.split(",") if genre.strip()]
-    return genres
+    print("Type 'list' to see all available genres.")
+
+    while True:
+        user_input = input("Enter your favorite genres (separated by commas): ")
+        choice = user_input.strip().lower()
+        if choice == "list":
+            print("\nAvailable genres:")
+            for genre in sorted(all_genres):
+                print(" - " + genre)
+            print("") 
+            continue
+        # Parse user-entered genres
+        raw_parts = user_input.split(",")
+        genres = []
+        for part in raw_parts:
+            cleaned = part.strip()
+            if cleaned:
+                genres.append(cleaned.title())
+        return genres
 
 def display_recommendations(recommendations):
     """
@@ -58,9 +83,16 @@ def get_number_of_recommendations():
 
 # Example test run if this file is run directly
 if __name__ == "__main__":
-    user_genres = get_user_preferences()
+    # Example movie data for testing
+    sample_movies = [
+        {"title": "Movie A", "genres": ["Action", "Comedy"]},
+        {"title": "Movie B", "genres": ["Drama", "Romance"]}
+    ]
+    user_genres = get_user_preferences(sample_movies)
 
     # Example recommendations for testing purposes
     sample_recommendations = ["Spiderman: No Way Home", "The Matrix", "The Minecraft Movie"]
 
     display_recommendations(sample_recommendations)
+
+
