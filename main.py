@@ -23,7 +23,7 @@ def main():
     The flow of the program:
     1. Option of amount of Recommendations
     2. Load the movie data from a CSV file.
-    3. Get the user's preferences (genres they like, or 'random').
+    3. Get the user's preferences (genres they like, 'random', or quiz result).
     4. Recommend movies based on those preferences or at random.
     5. Display the recommendations to the user.
     """
@@ -39,6 +39,10 @@ def main():
         return
 
     # Get user preferences (pass movie data to allow 'list' of genres)
+    user_preferences = get_user_preferences(movies)
+
+    # Ask if the user wants a short quiz or to pick genres manually
+    print("Need help choosing? Type 'quiz' to answer a few questions.")
     user_preferences = get_user_preferences(movies)
 
     # If user asks for a random mix, ignore genres and pick at random
@@ -64,4 +68,5 @@ def main():
 if __name__ == "__main__":
     # Start the program
     main()
+    
     

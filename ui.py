@@ -31,16 +31,19 @@ def get_user_preferences(movies):
     print("Example genres: Action, Comedy, Sci-Fi, Adventure, Animation, Romance")
     print("Or type 'random' for a surprise mix of movies!")
     print("Type 'list' to see all available genres.")
-
+    print("Type 'quiz' to take a short quiz that helps pick a genre.")
+    
     while True:
-        user_input = input("Enter your favorite genres (separated by commas): ")
+        user_input = input("Enter your favorite genres (separated by commas), or 'quiz': ")
         choice = user_input.strip().lower()
         if choice == "list":
             print("\nAvailable genres:")
             for genre in sorted(all_genres):
                 print(" - " + genre)
-            print("") 
+            print("")  
             continue
+        if choice == "quiz":
+            return run_genre_quiz()
         # Parse user-entered genres
         raw_parts = user_input.split(",")
         genres = []
@@ -49,6 +52,40 @@ def get_user_preferences(movies):
             if cleaned:
                 genres.append(cleaned.title())
         return genres
+
+def run_genre_quiz():
+    """
+    Ask the user a few simple questions to suggest one or two genres.
+
+    Returns:
+        list: A list of genre names.
+    """
+    print("\nLet's find a genre that fits your mood!")
+    # Question 1
+    q1 = input("Do you prefer fast-paced action or slower, thoughtful stories? (action vs thoughtful) ")
+    # Question 2
+    q2 = input("Do you like funny and light-hearted or serious and dramatic? (funny vs serious) ")
+    # Question 3
+    q3 = input("Do you enjoy real-world settings or imaginative worlds? (real vs imaginative) ")
+
+    # mapping logic
+    genres = []
+    if q1.lower().startswith('action'):
+        genres.append('Action')
+    else:
+        genres.append('Drama')  
+    if q2.lower().startswith('funny'):
+        genres.append('Comedy')
+    else:
+        genres = ['Thriller']
+    if q3.lower().startswith('imagin'):
+        genres.append('Sci-Fi')
+    else:
+        genres.append('Adventure')
+
+    print(f"Based on your answers, we suggest: {', '.join(genres)}")
+    return genres
+
 
 def display_recommendations(recommendations):
     """
