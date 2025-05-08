@@ -18,6 +18,7 @@ def get_user_preferences():
     print("Welcome to the Movie Recommendation System!")
     print("Tell us the kinds of movies you enjoy so we can recommend some for you.")
     print("Example genres: Action, Comedy, Sci-Fi, Adventure, Animation, Romance")
+    print("Or type 'random' for a surprise mix of movies!")
     user_input = input("Enter your favorite genres (separated by commas): ")
     
     # Clean up the input and return it as a list of genres
