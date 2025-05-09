@@ -8,11 +8,26 @@ based on those preferences.
 Author: Kenia Aviles, Kirubel Mogese
 """
 
+import os
+
+
+def print_header():
+    """
+    Shows the application header with borders.
+    """
+    print()  # spacing 
+    print('=' * 60)
+    print('      🎬  Movie Recommendation System  🎬')
+    print('=' * 60)
+    print()  # spacing 
+
+
 def get_user_preferences(movies):
     """
     Prompts the user to enter their favorite movie genres.
 
     Users can type 'random' or 'list' to view all available genres before choosing.
+    Or type 'quiz' to take a short quiz that helps pick a genre.
 
     Args:
         movies (list): List of movie data to extract available genres.
@@ -20,38 +35,47 @@ def get_user_preferences(movies):
     Returns:
         list: A list of genre strings entered by the user.
     """
+    # spacing 
+    print()  
+
     # Build a set of all genres from the movie data
     all_genres = set()
     for movie in movies:
         for g in movie.get("genres", []):
             all_genres.add(g)
 
-    print("Welcome to the Movie Recommendation System!")
-    print("Tell us the kinds of movies you enjoy so we can recommend some for you.")
-    print("Example genres: Action, Comedy, Sci-Fi, Adventure, Animation, Romance")
-    print("Or type 'random' for a surprise mix of movies!")
-    print("Type 'list' to see all available genres.")
-    print("Type 'quiz' to take a short quiz that helps pick a genre.")
-    
+    # Display options
+    print('Options:')
+    print('- Type comma-separated genres (e.g. Action, Comedy)')
+    print("- Type 'random' for a surprise mix of movies!")
+    print("- Type 'list' to see all available genres")
+    print("- Type 'quiz' to take a short quiz that helps pick a genre")
+    print('-' * 60)
+
     while True:
-        user_input = input("Enter your favorite genres (separated by commas), or 'quiz': ")
-        choice = user_input.strip().lower()
+        choice = input('Your choice: ').strip().lower()
         if choice == "list":
-            print("\nAvailable genres:")
+            print('\nAvailable genres:')
             for genre in sorted(all_genres):
-                print(" - " + genre)
-            print("")  
+                print('  -', genre)
+            print('-' * 60)
             continue
+
+        if choice == "random":
+            return ['Random']
+
         if choice == "quiz":
             return run_genre_quiz()
-        # Parse user-entered genres
-        raw_parts = user_input.split(",")
-        genres = []
-        for part in raw_parts:
-            cleaned = part.strip()
-            if cleaned:
-                genres.append(cleaned.title())
-        return genres
+
+        # Parse manual genres
+        parts = choice.split(',')
+        genres = [p.strip().title() for p in parts if p.strip()]
+        if genres:
+            return genres
+
+        print('Please enter at least one valid option.')
+        print('-' * 60)
+
 
 def run_genre_quiz():
     """
@@ -60,30 +84,33 @@ def run_genre_quiz():
     Returns:
         list: A list of genre names.
     """
-    print("\nLet's find a genre that fits your mood!")
-    # Question 1
-    q1 = input("Do you prefer fast-paced action or slower, thoughtful stories? (action vs thoughtful) ")
-    # Question 2
-    q2 = input("Do you like funny and light-hearted or serious and dramatic? (funny vs serious) ")
-    # Question 3
-    q3 = input("Do you enjoy real-world settings or imaginative worlds? (real vs imaginative) ")
+    # Quiz prompt
+    print('\nQuiz: What mood fits you today?')
+    print('-' * 60)
+    q1 = input('1) Do you prefer fast-paced action or slower, thoughtful stories? (action vs thoughtful) ').strip().lower()
+    q2 = input('2) Funny and light-hearted or serious and dramatic? (funny vs serious) ').strip().lower()
+    q3 = input('3) Real-world settings or imaginative worlds? (real vs imaginative) ').strip().lower()
 
     # mapping logic
     genres = []
-    if q1.lower().startswith('action'):
+    if q1.startswith('action'):
         genres.append('Action')
     else:
-        genres.append('Drama')  
-    if q2.lower().startswith('funny'):
+        genres.append('Drama')
+    if q2.startswith('funny'):
         genres.append('Comedy')
     else:
         genres = ['Thriller']
-    if q3.lower().startswith('imagin'):
+    if q3.startswith('imagin'):
         genres.append('Sci-Fi')
     else:
         genres.append('Adventure')
 
-    print(f"Based on your answers, we suggest: {', '.join(genres)}")
+    print('\nQuiz complete! We suggest:')
+    print('-' * 60)
+    for g in genres:
+        print('  *', g)
+    print('-' * 60)
     return genres
 
 
@@ -94,12 +121,20 @@ def display_recommendations(recommendations):
     Args:
         recommendations (list): A list of movie titles (strings).
     """
-    print("\n Here are some movies you might enjoy:")
+    print()  
+    print('=' * 60)
+    print('  🎉 Your Movie Recommendations 🎉')
+    print('=' * 60)
+
     if not recommendations:
-        print("Sorry, we couldn't find any matching movies.")
+        print('Sorry, we couldn\'t find any matching movies.')
     else:
         for movie in recommendations:
             print(f"- {movie}")
+
+    print('=' * 60)
+    print()  
+
 
 def get_number_of_recommendations():
     """
@@ -108,15 +143,16 @@ def get_number_of_recommendations():
     Returns:
         int: The number of movie recommendations to show.
     """
+    print_header()
     while True:
         try:
-            num = int(input("How many movie recommendations would you like? "))
+            num = int(input('How many movie recommendations would you like? '))
             if num > 0:
                 return num
             else:
-                print("Please enter a positive number.")
+                print('Please enter a positive number.')
         except ValueError:
-            print("Invalid input. Please enter a number.")
+            print('Invalid input. Please enter a number.')
 
 # Example test run if this file is run directly
 if __name__ == "__main__":
@@ -131,5 +167,4 @@ if __name__ == "__main__":
     sample_recommendations = ["Spiderman: No Way Home", "The Matrix", "The Minecraft Movie"]
 
     display_recommendations(sample_recommendations)
-
-
+    

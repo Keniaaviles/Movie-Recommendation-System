@@ -41,10 +41,6 @@ def main():
     # Get user preferences (pass movie data to allow 'list' of genres)
     user_preferences = get_user_preferences(movies)
 
-    # Ask if the user wants a short quiz or to pick genres manually
-    print("Need help choosing? Type 'quiz' to answer a few questions.")
-    user_preferences = get_user_preferences(movies)
-
     # If user asks for a random mix, ignore genres and pick at random
     if len(user_preferences) == 1 and user_preferences[0].lower() == "random":
         available = list(movies)              # copy the list
