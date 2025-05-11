@@ -26,3 +26,23 @@ REQUIREMENTS
 To run the project, ensure you have the following installed:
 - Python 3.7 or higher.
 No third-party libraries are required. This project runs using only Python's standard library.
+
+
+Installation & Usage 
+
+1. Clone the Repository
+   - Go to the Github Repo Page & Click the green "Code" button, then copy the HTTPS URL
+
+2. Open Terminal or Command Prompt
+   - Windows: Open "Command Prompt"
+   - Mac/Linux: Open "Terminal"
+
+3. Run "git clone" with the Repo URL
+   - (This will create a new folder with project files)
+
+4. Navigate Into the Project Folder
+   - Ex. "cd movie-recommendation-system"
+   - Now that you're inside the folder you can run the python program
+
+5. Run the Program.
+   - Ex. "python main.py" but if your system uses python3 instead use "python3 main.py"
