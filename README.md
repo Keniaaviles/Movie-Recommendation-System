@@ -16,7 +16,7 @@ FEATURES
 PROJECT STRUCTURE
 
 - ├── main.py                                                 # Main application script
-- ├── ui.py                                                   # Handles user input/output
+- ├── ui.py                                                   # Handles user input/output 
 - ├── recommender.py                                          # Contains recommendation logic
 - ├── data_handler.py                                         # Loads and parses movie dataset
 - ├── movies_data.csv                                         # Dataset of movies and genres
