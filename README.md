@@ -28,7 +28,8 @@ To run the project, ensure you have the following installed:
 No third-party libraries are required. This project runs using only Python's standard library.
 
 
-Installation & Usage 
+
+INSTALLATION & USAGE
 
 1. Clone the Repository
    - Go to the Github Repo Page & Click the green "Code" button, then copy the HTTPS URL
