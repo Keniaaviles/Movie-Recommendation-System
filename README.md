@@ -47,3 +47,5 @@ INSTALLATION & USAGE
 
 5. Run the Program.
    - Ex. "python main.py" but if your system uses python3 instead use "python3 main.py"
+  
+6. Enjoy!
