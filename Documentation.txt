@@ -1,0 +1,66 @@
+Project Summary:
+The Movie Recommendation System is a Python based application
+that simplifies the process of selecting movies for individuals
+or groups. By leveraging user preferences and favorite genres
+the systems gives personalized movie recommendations that make 
+finding a movie more enjoyable for the user. Users can enter
+there preferences manually, explore the genres, or take a quiz
+all the recive suggustions. The program runs offline, is simple
+to use doesn't require to create an account or login, and 
+doesn't require internet access. 
+
+
+How to run program:
+To run the project, ensure you have the following installed:
+
+Python 3.7 or higher. No third-party libraries are required. This project runs using only Python's standard library.
+INSTALLATION & USAGE
+
+Clone the Repository
+
+Go to the Github Repo Page & Click the green "Code" button, then copy the HTTPS URL
+Open Terminal or Command Prompt
+
+Windows: Open "Command Prompt"
+Mac/Linux: Open "Terminal"
+Run "git clone" with the Repo URL
+
+(This will create a new folder with project files)
+Navigate Into the Project Folder
+
+Ex. "cd movie-recommendation-system"
+Now that you're inside the folder you can run the python program
+Run the Program.
+
+Ex. "python main.py" but if your system uses python3 instead use "python3 main.py"
+
+
+How to use Program:
+Once launched:
+
+Asks how many movie recommendations you want
+
+Offers multiple options to choose genres:
+
+Type genres directly (e.g., Action, Comedy)
+
+Type list to see all available genres
+
+Type quiz to take a short mood-based quiz
+
+Type random to get surprise recommendations
+
+Displays your recommended movies
+
+Asks if you’d like to run it again
+
+
+
+References
+Andy Dolinski. (2020, April 29). Importing CSV files into Python. YouTube. https://www.youtube.com/watch?v=OMbMLfHbmdk
+Caleb Curry. (2021, July 20). Super Clean Visual Studio Code Setup (Clutter Free Output). YouTube. https://www.youtube.com/watch?v=XKR7t0oagUk
+Pao, S. (2025). Building a Recommendation System in Python. Youtu.be. https://youtu.be/G4MBc40rQ2k?si=JGRO8--5N_CUV2cY
+Python Software Foundation. (2020). csv — CSV File Reading and Writing — Python 3.8.1 documentation. Python.org. https://docs.python.org/3/library/csv.html
+Real Python. (2018, July 16). Reading and Writing CSV Files in Python. Realpython.com; Real Python. https://realpython.com/python-csv/
+Reddit - The heart of the internet. (2025). Reddit.com. https://www.reddit.com/r/learnpython/comments/g3jm9o/i_cant_find_my_csv_file/?rdt=52974
+The Python Tutorial. (2025, May 11). 10. Brief Tour of the Standard Library — Python 3.10.2 documentation. Docs.python.org; python.org. https://docs.python.org/3/tutorial/stdlib.html
